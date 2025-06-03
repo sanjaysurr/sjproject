@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document Library</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .action-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px;
+    }
+
+    .menu-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      min-width: 120px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .menu-content button {
+      width: 100%;
+      padding: 8px 12px;
+      border: none;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .menu-content button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .action-menu.show .menu-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="topbar">
+    <div class="logo">S</div>
+    <h1>Document Library</h1>
+    <input type="text" placeholder="Search this library..." class="search-bar" />
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar section-gap">
+    <button class="btn" id="new-folder-btn">New Folder</button>
+    <button class="btn">Upload</button>
+    <button class="btn">Download</button>
+  </div>
+
+  <!-- Hidden file input -->
+  <input type="file" id="file-input" multiple style="display: none" />
+
+  <!-- Path -->
+  <div class="breadcrumb section-gap">Documents / Projects / 2025 / ClientX</div>
+
+  <!-- Main Content -->
+  <div class="main-content section-gap">
+    <table class="file-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Modified</th>
+          <th>Modified By</th>
+          <th>File Size</th>
+          <th>Project</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="file-table-body">
+        <!-- Folders -->
+        <tr class="folder" data-path="/documents/proposals">
+          <td><i class="fa-solid fa-folder"></i> Proposals</td>
+          <td>2025-05-29 2:00 PM</td>
+          <td>Jane Smith</td>
+          <td>--</td>
+          <td>ClientX</td>
+          <td></td>
+        </tr>
+        <tr class="folder" data-path="/documents/contracts">
+          <td><i class="fa-solid fa-folder"></i> Contracts</td>
+          <td>2025-05-28 11:00 AM</td>
+          <td>John Doe</td>
+          <td>--</td>
+          <td>ClientX</td>
+          <td></td>
+        </tr>
+
+        <!-- Files -->
+        <tr>
+          <td><i class="fa-regular fa-file-pdf" style="color: red;"></i> Project Plan.pdf</td>
+          <td>2025-05-29 10:00 AM</td>
+          <td>John Doe</td>
+          <td>1.5 MB</td>
+          <td>ClientX</td>
+          <td>
+            <div class="action-menu">
+              <button class="menu-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+              <div class="menu-content">
+                <button class="select-option" data-filename="Project Plan.pdf">Select</button>
+                <button class="delete-option">Delete</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><i class="fa-regular fa-file-word" style="color: blue;"></i> Meeting Notes.docx</td>
+          <td>2025-05-27 3:30 PM</td>
+          <td>Jane Smith</td>
+          <td>750 KB</td>
+          <td>ClientX</td>
+          <td>
+            <div class="action-menu">
+              <button class="menu-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+              <div class="menu-content">
+                <button class="select-option" data-filename="Meeting Notes.docx">Select</button>
+                <button class="delete-option">Delete</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><i class="fa-regular fa-file-image" style="color: green;"></i> DesignMockup.png</td>
+          <td>2025-05-25 9:00 AM</td>
+          <td>Alex Kim</td>
+          <td>2.2 MB</td>
+          <td>ClientX</td>
+          <td>
+            <div class="action-menu">
+              <button class="menu-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+              <div class="menu-content">
+                <button class="select-option" data-filename="DesignMockup.png">Select</button>
+                <button class="delete-option">Delete</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
